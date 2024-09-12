@@ -15,14 +15,16 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fs5mk"]
-radius = 4.0
-height = 12.0
+radius = 2.0
+height = 6.0
 
 [node name="Player" type="CharacterBody2D"]
+z_index = 5
 script = ExtResource("1_1nrc7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_w2fte")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_fs5mk")
