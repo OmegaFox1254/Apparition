@@ -1,0 +1,112 @@
+[gd_scene load_steps=13 format=3 uid="uid://d2kkwe2bqbtdo"]
+
+[ext_resource type="PackedScene" uid="uid://cd8nvfesacup8" path="res://Scenes/texture_progress_bar.tscn" id="1_t22u3"]
+
+[sub_resource type="Gradient" id="Gradient_ipi4w"]
+offsets = PackedFloat32Array(0.402402, 0.60961)
+colors = PackedColorArray(0.0212311, 1, 0, 1, 0.946314, 1, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_4e5bx"]
+seed = -1558351262
+offset = Vector3(0, 0, 13044.9)
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ql8gq"]
+width = 71
+height = 7
+in_3d_space = true
+color_ramp = SubResource("Gradient_ipi4w")
+noise = SubResource("FastNoiseLite_4e5bx")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0rj3r"]
+atlas = SubResource("NoiseTexture2D_ql8gq")
+region = Rect2(0, 0, 71, 7)
+margin = Rect2(1, 0, -1, 0)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_vormg"]
+seed = 187224622
+offset = Vector3(0, 0, 13044.9)
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ligl5"]
+width = 71
+height = 7
+in_3d_space = true
+noise = SubResource("FastNoiseLite_vormg")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xqumx"]
+atlas = SubResource("NoiseTexture2D_ligl5")
+region = Rect2(0, 0, 71, 7)
+margin = Rect2(1, 0, -1, 0)
+
+[sub_resource type="Gradient" id="Gradient_52vul"]
+offsets = PackedFloat32Array(0.456456, 0.618619)
+colors = PackedColorArray(1, 0.926017, 0, 1, 1, 0.812294, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_01dw1"]
+noise_type = 3
+seed = 158511198
+frequency = 0.3533
+offset = Vector3(0, 0, 13044.9)
+fractal_type = 3
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_d24r4"]
+width = 71
+height = 7
+in_3d_space = true
+color_ramp = SubResource("Gradient_52vul")
+noise = SubResource("FastNoiseLite_01dw1")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p0ri3"]
+atlas = SubResource("NoiseTexture2D_d24r4")
+region = Rect2(0, 0, 71, 7)
+margin = Rect2(1, 0, -1, 0)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="stamina" parent="." instance=ExtResource("1_t22u3")]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -71.0
+offset_top = -7.0
+grow_horizontal = 0
+grow_vertical = 0
+pivot_offset = Vector2(73.75, 23.75)
+texture_progress = SubResource("AtlasTexture_0rj3r")
+noise_texture = SubResource("NoiseTexture2D_ql8gq")
+
+[node name="health" parent="." instance=ExtResource("1_t22u3")]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -71.0
+offset_top = -7.0
+grow_horizontal = 0
+grow_vertical = 0
+pivot_offset = Vector2(73.75, 11.75)
+texture_progress = SubResource("AtlasTexture_xqumx")
+tint_progress = Color(1, 0, 0, 1)
+noise_texture = SubResource("NoiseTexture2D_ligl5")
+
+[node name="flash" parent="." instance=ExtResource("1_t22u3")]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -7.0
+offset_right = 71.0
+grow_vertical = 0
+pivot_offset = Vector2(-4, 11.75)
+texture_progress = SubResource("AtlasTexture_p0ri3")
+noise_texture = SubResource("NoiseTexture2D_d24r4")
