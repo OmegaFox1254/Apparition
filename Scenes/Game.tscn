@@ -1,7 +1,8 @@
-[gd_scene load_steps=27 format=4 uid="uid://btk3re1p8p4fp"]
+[gd_scene load_steps=28 format=4 uid="uid://btk3re1p8p4fp"]
 
 [ext_resource type="PackedScene" uid="uid://bb20o0v6bt6sl" path="res://Scenes/player.tscn" id="1_8e4mg"]
 [ext_resource type="PackedScene" uid="uid://d2kkwe2bqbtdo" path="res://Scenes/GUI.tscn" id="2_j65li"]
+[ext_resource type="PackedScene" uid="uid://coaq2aavqvkct" path="res://Scenes/pausel.tscn" id="3_c8sbc"]
 [ext_resource type="Texture2D" uid="uid://c5u8w5mmugxi5" path="res://Assets/Sprites/walls.png" id="3_qc0f3"]
 [ext_resource type="Texture2D" uid="uid://braw735ytuhiy" path="res://Assets/Sprites/Floors.png" id="4_h1odd"]
 
@@ -37,12 +38,18 @@ fill_from = Vector2(0.5, 0.491453)
 fill_to = Vector2(0.5, 0)
 
 [sub_resource type="Gradient" id="Gradient_ipi4w"]
-offsets = PackedFloat32Array(0.402402, 0.60961)
-colors = PackedColorArray(0.0212311, 1, 0, 1, 0.946314, 1, 0, 1)
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(0.00649999, 0.39, 0, 1, 0.0212311, 1, 0, 1, 0.946314, 1, 0, 1)
+metadata/_snap_enabled = true
+metadata/_snap_count = 2
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_4e5bx"]
+noise_type = 5
 seed = -1558351262
-offset = Vector3(0, 0, 66932)
+frequency = 0.0038
+offset = Vector3(0, 0, 68359.9)
+fractal_type = 2
+domain_warp_enabled = true
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ql8gq"]
 width = 71
@@ -51,14 +58,20 @@ in_3d_space = true
 color_ramp = SubResource("Gradient_ipi4w")
 noise = SubResource("FastNoiseLite_4e5bx")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xjspw"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_wd7lx"]
 atlas = SubResource("NoiseTexture2D_ql8gq")
 region = Rect2(0, 0, 71, 7)
 margin = Rect2(1, 0, -1, 0)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_vormg"]
+noise_type = 3
 seed = 187224622
-offset = Vector3(0, 0, 66932)
+frequency = 0.0796
+offset = Vector3(0, 0, 68000)
+fractal_type = 2
+domain_warp_enabled = true
+domain_warp_type = 1
+domain_warp_fractal_type = 0
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ligl5"]
 width = 71
@@ -66,21 +79,24 @@ height = 7
 in_3d_space = true
 noise = SubResource("FastNoiseLite_vormg")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dbnyw"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_tmcq0"]
 atlas = SubResource("NoiseTexture2D_ligl5")
 region = Rect2(0, 0, 71, 7)
 margin = Rect2(1, 0, -1, 0)
 
 [sub_resource type="Gradient" id="Gradient_52vul"]
-offsets = PackedFloat32Array(0.456456, 0.618619)
-colors = PackedColorArray(1, 0.926017, 0, 1, 1, 0.812294, 0, 1)
+offsets = PackedFloat32Array(0, 0.378378, 0.663664, 0.834835)
+colors = PackedColorArray(1, 0.926017, 0, 1, 1, 0.812294, 0, 1, 1, 0.670164, 0, 1, 0.991858, 1, 0, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_01dw1"]
 noise_type = 3
 seed = 158511198
-frequency = 0.3533
-offset = Vector3(0, 0, 66932)
+frequency = 0.0273
+offset = Vector3(0, 0, 68179.4)
 fractal_type = 3
+domain_warp_enabled = true
+domain_warp_type = 2
+domain_warp_fractal_type = 2
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_d24r4"]
 width = 71
@@ -89,7 +105,7 @@ in_3d_space = true
 color_ramp = SubResource("Gradient_52vul")
 noise = SubResource("FastNoiseLite_01dw1")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_w16kg"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_2svfk"]
 atlas = SubResource("NoiseTexture2D_d24r4")
 region = Rect2(0, 0, 71, 7)
 margin = Rect2(1, 0, -1, 0)
@@ -159,9 +175,10 @@ fill_to = Vector2(0.5, 1)
 
 [node name="Game" type="Node2D"]
 
-[node name="Player" parent="." node_paths=PackedStringArray("speedBar", "flashlightBar", "healthBar") instance=ExtResource("1_8e4mg")]
+[node name="Player" parent="." node_paths=PackedStringArray("pauseMenu", "speedBar", "flashlightBar", "healthBar") instance=ExtResource("1_8e4mg")]
 position = Vector2(-48, 48)
 motion_mode = 1
+pauseMenu = NodePath("CanvasLayer/Control2")
 speedBar = NodePath("CanvasLayer/Control/stamina")
 flashlightBar = NodePath("CanvasLayer/Control/flash")
 healthBar = NodePath("CanvasLayer/Control/health")
@@ -189,13 +206,16 @@ editor_draw_screen = false
 [node name="Control" parent="Player/CanvasLayer" instance=ExtResource("2_j65li")]
 
 [node name="stamina" parent="Player/CanvasLayer/Control" index="0"]
-texture_progress = SubResource("AtlasTexture_xjspw")
+texture_progress = SubResource("AtlasTexture_wd7lx")
 
 [node name="health" parent="Player/CanvasLayer/Control" index="1"]
-texture_progress = SubResource("AtlasTexture_dbnyw")
+texture_progress = SubResource("AtlasTexture_tmcq0")
 
 [node name="flash" parent="Player/CanvasLayer/Control" index="2"]
-texture_progress = SubResource("AtlasTexture_w16kg")
+texture_progress = SubResource("AtlasTexture_2svfk")
+
+[node name="Control2" parent="Player/CanvasLayer" instance=ExtResource("3_c8sbc")]
+visible = false
 
 [node name="Layer0" type="TileMapLayer" parent="."]
 modulate = Color(0.0475577, 0.0475577, 0.0475576, 1)

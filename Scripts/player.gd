@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 @export var HEALTH:int = 100;
 @export var FLASH:int = 100;
+@export var pauseMenu:Control;
 @export_category("bars")
 @export var speedBar:TextureProgressBar;
 @export var flashlightBar:TextureProgressBar;
@@ -20,7 +21,15 @@ const JUMP_VELOCITY:float = -400.0;
 
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-
+func _unhandled_input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("ui_cancel"):
+		print(Engine.time_scale)
+		Engine.time_scale = !Engine.time_scale
+		pauseMenu.visible = !pauseMenu.visible
+		if !Engine.time_scale:
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		else:
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 func _physics_process(delta):
 	if SPRINTAMMT <= 0:
 		SPRINTOUT = true
