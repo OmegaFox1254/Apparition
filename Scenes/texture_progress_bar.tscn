@@ -1,7 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://cd8nvfesacup8"]
+[gd_scene load_steps=6 format=3 uid="uid://cd8nvfesacup8"]
 
 [ext_resource type="Script" path="res://materials/noise.gd" id="1_0ay3v"]
 [ext_resource type="Texture2D" uid="uid://br4tbkprllr0m" path="res://Assets/Sprites/bar_base.png" id="1_k5cun"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_5vddq"]
+seed = -1520432562
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_akmg7"]
+width = 71
+height = 7
+in_3d_space = true
+noise = SubResource("FastNoiseLite_5vddq")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ygba"]
+atlas = SubResource("NoiseTexture2D_akmg7")
+region = Rect2(0, 0, 71, 7)
+margin = Rect2(1, 0, -1, 0)
 
 [node name="ProgressBar2" type="TextureProgressBar"]
 scale = Vector2(4, 4)
@@ -9,4 +23,6 @@ step = 4.0
 value = 52.0
 rounded = true
 texture_over = ExtResource("1_k5cun")
+texture_progress = SubResource("AtlasTexture_2ygba")
 script = ExtResource("1_0ay3v")
+noise_texture = SubResource("NoiseTexture2D_akmg7")

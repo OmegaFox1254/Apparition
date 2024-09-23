@@ -26,7 +26,7 @@ func _physics_process(delta):
 		SPRINTOUT = true
 	if SPRINTAMMT >= 100:
 		SPRINTOUT = false
-	if Input.is_action_pressed("Sprint") && SPRINTOUT == false:
+	if Input.is_action_pressed("Sprint") && SPRINTOUT == false && (Vector2(Input.get_axis("Left", "Right"), Input.get_axis("Up", "Down")) != Vector2.ZERO):
 		SPEED = SPRINTSPEED
 		SPRINTAMMT-=3
 	else:
