@@ -1,30 +1,27 @@
 [gd_scene load_steps=5 format=3 uid="uid://bb20o0v6bt6sl"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_1nrc7"]
-[ext_resource type="Texture2D" uid="uid://xpbj0wdtgucu" path="res://Assets/Sprites/PlayerPlaceholder.png" id="2_esfjr"]
+[ext_resource type="Texture2D" uid="uid://c8bwvwicujh7c" path="res://Assets/Sprites/player.png" id="2_cdsjt"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_w2fte"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_esfjr")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aiem3"]
+size = Vector2(31.5363, 40.2534)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fs5mk"]
-radius = 2.0
-height = 6.0
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_2bef6"]
+light_mode = 1
 
 [node name="Player" type="CharacterBody2D"]
 z_index = 5
 script = ExtResource("1_1nrc7")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_w2fte")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 2)
-shape = SubResource("CapsuleShape2D_fs5mk")
+position = Vector2(3.23117e-27, -2.71051e-20)
+rotation = -3.14159
+scale = Vector2(0.279225, -0.406783)
+shape = SubResource("RectangleShape2D_aiem3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_2bef6")
+texture = ExtResource("2_cdsjt")
+hframes = 3
+vframes = 3
+frame = 4
