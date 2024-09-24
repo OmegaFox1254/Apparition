@@ -1,0 +1,50 @@
+[gd_scene load_steps=3 format=3 uid="uid://bw63ewtoh1pvb"]
+
+[ext_resource type="FontFile" uid="uid://bwqc51vpnyp8i" path="res://Assets/fonts/paper8.ttf" id="1_3wpuq"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_hpfnl"]
+line_spacing = -17.13
+font = ExtResource("1_3wpuq")
+font_size = 61
+outline_size = 10
+outline_color = Color(0.493211, 0.493211, 0.493211, 1)
+shadow_size = 10
+shadow_color = Color(0, 0, 0, 1)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -219.0
+offset_bottom = 0.36499
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(0, 219)
+color = Color(0.62, 0.62, 0.62, 0.313726)
+
+[node name="Label" type="Label" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_hpfnl")
+horizontal_alignment = 1
+vertical_alignment = 1
