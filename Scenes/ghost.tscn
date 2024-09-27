@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://b288gd63efmmk"]
+
+[ext_resource type="Script" path="res://Scripts/area_2d.gd" id="2_qa08s"]
+
+[sub_resource type="GDScript" id="GDScript_pha4u"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h8vax"]
+radius = 32.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+script = SubResource("GDScript_pha4u")
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("2_qa08s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_h8vax")
+debug_color = Color(0, 0.544001, 0.7, 0.352941)

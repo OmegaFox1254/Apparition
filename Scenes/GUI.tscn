@@ -3,12 +3,18 @@
 [ext_resource type="PackedScene" uid="uid://cd8nvfesacup8" path="res://Scenes/texture_progress_bar.tscn" id="1_t22u3"]
 
 [sub_resource type="Gradient" id="Gradient_ipi4w"]
-offsets = PackedFloat32Array(0.402402, 0.60961)
-colors = PackedColorArray(0.0212311, 1, 0, 1, 0.946314, 1, 0, 1)
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(0.00649999, 0.39, 0, 1, 0.0212311, 1, 0, 1, 0.946314, 1, 0, 1)
+metadata/_snap_enabled = true
+metadata/_snap_count = 2
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_4e5bx"]
+noise_type = 5
 seed = -1558351262
-offset = Vector3(0, 0, 14813.5)
+frequency = 0.0038
+offset = Vector3(0, 0, 66277.2)
+fractal_type = 2
+domain_warp_enabled = true
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ql8gq"]
 width = 71
@@ -17,14 +23,20 @@ in_3d_space = true
 color_ramp = SubResource("Gradient_ipi4w")
 noise = SubResource("FastNoiseLite_4e5bx")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nvjkk"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_cfh8o"]
 atlas = SubResource("NoiseTexture2D_ql8gq")
 region = Rect2(0, 0, 71, 7)
 margin = Rect2(1, 0, -1, 0)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_vormg"]
+noise_type = 3
 seed = 187224622
-offset = Vector3(0, 0, 14813.5)
+frequency = 0.0796
+offset = Vector3(0, 0, 65917.3)
+fractal_type = 2
+domain_warp_enabled = true
+domain_warp_type = 1
+domain_warp_fractal_type = 0
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ligl5"]
 width = 71
@@ -32,21 +44,24 @@ height = 7
 in_3d_space = true
 noise = SubResource("FastNoiseLite_vormg")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pu1je"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_8478x"]
 atlas = SubResource("NoiseTexture2D_ligl5")
 region = Rect2(0, 0, 71, 7)
 margin = Rect2(1, 0, -1, 0)
 
 [sub_resource type="Gradient" id="Gradient_52vul"]
-offsets = PackedFloat32Array(0.456456, 0.618619)
-colors = PackedColorArray(1, 0.926017, 0, 1, 1, 0.812294, 0, 1)
+offsets = PackedFloat32Array(0, 0.378378, 0.663664, 0.834835)
+colors = PackedColorArray(1, 0.926017, 0, 1, 1, 0.812294, 0, 1, 1, 0.670164, 0, 1, 0.991858, 1, 0, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_01dw1"]
 noise_type = 3
 seed = 158511198
-frequency = 0.3533
-offset = Vector3(0, 0, 14813.5)
+frequency = 0.0273
+offset = Vector3(0, 0, 66096.7)
 fractal_type = 3
+domain_warp_enabled = true
+domain_warp_type = 2
+domain_warp_fractal_type = 2
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_d24r4"]
 width = 71
@@ -55,7 +70,7 @@ in_3d_space = true
 color_ramp = SubResource("Gradient_52vul")
 noise = SubResource("FastNoiseLite_01dw1")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jq8ix"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_yrinw"]
 atlas = SubResource("NoiseTexture2D_d24r4")
 region = Rect2(0, 0, 71, 7)
 margin = Rect2(1, 0, -1, 0)
@@ -80,7 +95,7 @@ offset_top = -7.0
 grow_horizontal = 0
 grow_vertical = 0
 pivot_offset = Vector2(73.75, 23.75)
-texture_progress = SubResource("AtlasTexture_nvjkk")
+texture_progress = SubResource("AtlasTexture_cfh8o")
 noise_texture = SubResource("NoiseTexture2D_ql8gq")
 
 [node name="health" parent="." instance=ExtResource("1_t22u3")]
@@ -95,7 +110,7 @@ offset_top = -7.0
 grow_horizontal = 0
 grow_vertical = 0
 pivot_offset = Vector2(73.75, 11.75)
-texture_progress = SubResource("AtlasTexture_pu1je")
+texture_progress = SubResource("AtlasTexture_8478x")
 tint_progress = Color(1, 0, 0, 1)
 noise_texture = SubResource("NoiseTexture2D_ligl5")
 
@@ -108,5 +123,5 @@ offset_top = -7.0
 offset_right = 71.0
 grow_vertical = 0
 pivot_offset = Vector2(-4, 11.75)
-texture_progress = SubResource("AtlasTexture_jq8ix")
+texture_progress = SubResource("AtlasTexture_yrinw")
 noise_texture = SubResource("NoiseTexture2D_d24r4")

@@ -1,0 +1,124 @@
+[gd_scene load_steps=13 format=3 uid="uid://coaq2aavqvkct"]
+
+[ext_resource type="Shader" path="res://materials/invert.gdshader" id="1_rftqv"]
+[ext_resource type="PackedScene" uid="uid://cd8nvfesacup8" path="res://Scenes/texture_progress_bar.tscn" id="2_3vtvt"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v8s4p"]
+shader = ExtResource("1_rftqv")
+
+[sub_resource type="LabelSettings" id="LabelSettings_trs1x"]
+font_size = 146
+
+[sub_resource type="InputEventKey" id="InputEventKey_i0pkk"]
+device = -1
+alt_pressed = true
+keycode = 4194335
+
+[sub_resource type="Shortcut" id="Shortcut_daxpt"]
+events = [SubResource("InputEventKey_i0pkk")]
+
+[sub_resource type="Gradient" id="Gradient_cljap"]
+offsets = PackedFloat32Array(0, 0.543131, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.543131, 0.629645, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ri4ap"]
+noise_type = 4
+seed = 1381939053
+frequency = 0.279
+offset = Vector3(0, 0, 139166)
+domain_warp_enabled = true
+domain_warp_fractal_type = 0
+metadata/_preview_in_3d_space_ = true
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_n4rr4"]
+width = 71
+height = 7
+in_3d_space = true
+color_ramp = SubResource("Gradient_cljap")
+noise = SubResource("FastNoiseLite_ri4ap")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mfqrp"]
+atlas = SubResource("NoiseTexture2D_n4rr4")
+region = Rect2(0, 0, 71, 7)
+margin = Rect2(1, 0, -1, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r1kbm"]
+shader = ExtResource("1_rftqv")
+
+[sub_resource type="LabelSettings" id="LabelSettings_qx7xu"]
+font_size = 64
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="."]
+material = SubResource("ShaderMaterial_v8s4p")
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -282.0
+offset_right = 282.0
+offset_bottom = 208.0
+grow_horizontal = 2
+text = "PAUSED"
+label_settings = SubResource("LabelSettings_trs1x")
+
+[node name="Button" type="Button" parent="."]
+z_index = 9
+layout_mode = 2
+offset_left = 528.0
+offset_top = 320.0
+offset_right = 625.0
+offset_bottom = 351.0
+scale = Vector2(3.94248, 1.5896)
+pivot_offset = Vector2(48.7003, 15.7273)
+shortcut = SubResource("Shortcut_daxpt")
+text = "         "
+
+[node name="ProgressBar2" parent="Button" instance=ExtResource("2_3vtvt")]
+z_index = -1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.5
+offset_top = -3.49999
+offset_right = 35.5
+offset_bottom = 3.50001
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.36339, 4.76106)
+pivot_offset = Vector2(35.5407, 3.51579)
+max_value = 0.0
+value = 0.0
+allow_greater = true
+texture_progress = SubResource("AtlasTexture_mfqrp")
+noise_texture = SubResource("NoiseTexture2D_n4rr4")
+
+[node name="Label" type="Label" parent="Button"]
+material = SubResource("ShaderMaterial_r1kbm")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.3275
+offset_top = -15.3284
+offset_right = 329.672
+offset_bottom = 72.6716
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.140094, 0.340334)
+text = "QUIT GAME"
+label_settings = SubResource("LabelSettings_qx7xu")
+horizontal_alignment = 1
+vertical_alignment = 1
