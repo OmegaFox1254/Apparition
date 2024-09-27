@@ -42,7 +42,7 @@ colors = PackedColorArray(0.0212311, 1, 0, 1, 0.946314, 1, 0, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_4e5bx"]
 seed = -1558351262
-offset = Vector3(0, 0, 14813.5)
+offset = Vector3(0, 0, 31267.8)
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ql8gq"]
 width = 71
@@ -51,14 +51,14 @@ in_3d_space = true
 color_ramp = SubResource("Gradient_ipi4w")
 noise = SubResource("FastNoiseLite_4e5bx")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_p7pkr"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_q5pfy"]
 atlas = SubResource("NoiseTexture2D_ql8gq")
 region = Rect2(0, 0, 71, 7)
 margin = Rect2(1, 0, -1, 0)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_vormg"]
 seed = 187224622
-offset = Vector3(0, 0, 14813.5)
+offset = Vector3(0, 0, 31267.8)
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ligl5"]
 width = 71
@@ -66,7 +66,7 @@ height = 7
 in_3d_space = true
 noise = SubResource("FastNoiseLite_vormg")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8p6oc"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_0gekw"]
 atlas = SubResource("NoiseTexture2D_ligl5")
 region = Rect2(0, 0, 71, 7)
 margin = Rect2(1, 0, -1, 0)
@@ -79,7 +79,7 @@ colors = PackedColorArray(1, 0.926017, 0, 1, 1, 0.812294, 0, 1)
 noise_type = 3
 seed = 158511198
 frequency = 0.3533
-offset = Vector3(0, 0, 14813.5)
+offset = Vector3(0, 0, 31267.8)
 fractal_type = 3
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_d24r4"]
@@ -89,13 +89,12 @@ in_3d_space = true
 color_ramp = SubResource("Gradient_52vul")
 noise = SubResource("FastNoiseLite_01dw1")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7etxp"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_3f41x"]
 atlas = SubResource("NoiseTexture2D_d24r4")
 region = Rect2(0, 0, 71, 7)
 margin = Rect2(1, 0, -1, 0)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ufllh"]
-load_path = "res://.godot/imported/TempFloor.png-872f4050060c38f5aafb3b5fd3a4b111.ctex"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_77qlt"]
 texture = SubResource("CompressedTexture2D_ufllh")
@@ -177,13 +176,13 @@ editor_draw_screen = false
 [node name="Control" parent="Player/CanvasLayer" instance=ExtResource("2_j65li")]
 
 [node name="stamina" parent="Player/CanvasLayer/Control" index="0"]
-texture_progress = SubResource("AtlasTexture_p7pkr")
+texture_progress = SubResource("AtlasTexture_q5pfy")
 
 [node name="health" parent="Player/CanvasLayer/Control" index="1"]
-texture_progress = SubResource("AtlasTexture_8p6oc")
+texture_progress = SubResource("AtlasTexture_0gekw")
 
 [node name="flash" parent="Player/CanvasLayer/Control" index="2"]
-texture_progress = SubResource("AtlasTexture_7etxp")
+texture_progress = SubResource("AtlasTexture_3f41x")
 
 [node name="Layer0" type="TileMapLayer" parent="."]
 modulate = Color(0.0475577, 0.0475577, 0.0475576, 1)

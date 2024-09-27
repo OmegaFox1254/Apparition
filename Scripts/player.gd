@@ -16,6 +16,7 @@ extends CharacterBody2D
 var SPEED:float = 100.0;
 var SPRINTOUT:bool = false;
 const JUMP_VELOCITY:float = -400.0;
+var fpsTimer = 0
 
 
 
@@ -42,8 +43,7 @@ func _physics_process(delta):
 	
 	
 	var directionVector = Vector2(Input.get_axis("Left", "Right"), Input.get_axis("Up", "Down")).limit_length(4)
-	$Sprite2D.frame_coords = directionVector + Vector2(1, 1)
-	print($Sprite2D.frame_coords)
+
 	if directionVector.x:
 
 		velocity.x = directionVector.x * SPEED
@@ -56,5 +56,25 @@ func _physics_process(delta):
 	else:
 		velocity.y = move_toward(velocity.y, 0, SPEED)
 	
-	
 	move_and_slide()
+	
+	if directionVector:
+		var fps = 0
+		
+		fpsTimer += delta
+		if fpsTimer >= 0.2 && fpsTimer < 0.4:
+			fps = 1
+		if fpsTimer >= 0.4:
+			fps = 0
+			fpsTimer = 0
+		$Sprite2D.frame_coords = Vector2(fps, 1)
+	else:
+		var fps = 0
+		
+		fpsTimer += delta
+		if fpsTimer >= 1 && fpsTimer < 2:
+			fps = 1
+		if fpsTimer >= 2:
+			fps = 0
+			fpsTimer = 0
+		$Sprite2D.frame_coords = Vector2(fps, 0)
