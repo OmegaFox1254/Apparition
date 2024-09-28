@@ -21,7 +21,7 @@ var fpsTimer = 0
 
 
 func _unhandled_input(_event: InputEvent) -> void:
-	if Input.is_action_just_pressed("ui_cancel"):
+	if Input.is_action_just_pressed("Pause"):
 		Engine.time_scale = !Engine.time_scale
 		pauseMenu.visible = !pauseMenu.visible
 		if !Engine.time_scale:
@@ -44,8 +44,9 @@ func _physics_process(delta):
 	flashlightBar.value = FLASH
 	healthBar.value = HEALTH
 	var directionVector = Vector2(Input.get_axis("Left", "Right"), Input.get_axis("Up", "Down")).limit_length(4)
-
+	
 	if controllable:
+		$Sprite2D.frame_coords = directionVector + Vector2(1, 1)
 
 		if directionVector.x:
 			velocity.x = directionVector.x * SPEED
@@ -60,24 +61,3 @@ func _physics_process(delta):
 			velocity.y = move_toward(velocity.y, 0, SPEED)
 	
 	move_and_slide()
-	
-	if directionVector:
-		var fps = 0
-		
-		fpsTimer += delta
-		if fpsTimer >= 0.2 && fpsTimer < 0.4:
-			fps = 1
-		if fpsTimer >= 0.4:
-			fps = 0
-			fpsTimer = 0
-		$Sprite2D.frame_coords = Vector2(fps, 1)
-	else:
-		var fps = 0
-		
-		fpsTimer += delta
-		if fpsTimer >= 1 && fpsTimer < 2:
-			fps = 1
-		if fpsTimer >= 2:
-			fps = 0
-			fpsTimer = 0
-		$Sprite2D.frame_coords = Vector2(fps, 0)

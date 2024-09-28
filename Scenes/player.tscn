@@ -1,10 +1,10 @@
 [gd_scene load_steps=5 format=3 uid="uid://bb20o0v6bt6sl"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_1nrc7"]
-[ext_resource type="Texture2D" uid="uid://cjowbmfb30agv" path="res://Assets/Sprites/DeathSprite.png" id="2_atbpe"]
+[ext_resource type="Texture2D" uid="uid://dbtb1rl86kd7k" path="res://Assets/Sprites/DeathSprite.png" id="2_atbpe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aiem3"]
-size = Vector2(14.3254, 28.2706)
+size = Vector2(14.3254, 16.3575)
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_2bef6"]
 light_mode = 1
@@ -14,7 +14,7 @@ z_index = 5
 script = ExtResource("1_1nrc7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(7.15256e-07, 1.75)
+position = Vector2(-6.79541e-06, 2.68044)
 rotation = -3.14159
 scale = Vector2(0.308, -0.45)
 shape = SubResource("RectangleShape2D_aiem3")
@@ -23,5 +23,5 @@ shape = SubResource("RectangleShape2D_aiem3")
 material = SubResource("CanvasItemMaterial_2bef6")
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_atbpe")
-hframes = 2
-vframes = 2
+hframes = 3
+vframes = 3

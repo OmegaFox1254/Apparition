@@ -21,20 +21,19 @@ func _on_body_entered(body: Node2D) -> void:
 		text.text = dialog[currentText];
 
 func _input(event) -> void:
-	if event is InputEventMouseButton and dialouging == true:
-		if event.pressed:
-			if currentText+1 < dialog.size():
-				currentText+=1;
-				text.text = dialog[currentText];
-				if playerIsTalking[currentText] == true:
-					textBox.get_node("GhostPortrait").modulate = Color8(255, 255, 255, 160)
-					textBox.get_node("DeathPortrait").modulate = Color8(255, 255, 255, 255)
-				else:
-					textBox.get_node("GhostPortrait").modulate = Color8(255, 255, 255, 255)
-					textBox.get_node("DeathPortrait").modulate = Color8(255, 255, 255, 160)
-				
+	var Interacting = Input.is_action_just_pressed("Interact")
+	if Interacting and dialouging == true:
+		if currentText+1 < dialog.size():
+			currentText+=1;
+			text.text = dialog[currentText];
+			if playerIsTalking[currentText] == true:
+				textBox.get_node("GhostPortrait").modulate = Color8(255, 255, 255, 160)
+				textBox.get_node("DeathPortrait").modulate = Color8(255, 255, 255, 255)
 			else:
-				dialouging = false;
-				textBox.visible = false;
-				$CollisionShape2D.disabled = true;
-		
+				textBox.get_node("GhostPortrait").modulate = Color8(255, 255, 255, 255)
+				textBox.get_node("DeathPortrait").modulate = Color8(255, 255, 255, 160)
+			
+		else:
+			dialouging = false;
+			textBox.visible = false;
+			$CollisionShape2D.disabled = true;

@@ -2,11 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://bb20o0v6bt6sl" path="res://Scenes/player.tscn" id="1_8e4mg"]
 [ext_resource type="PackedScene" uid="uid://d2kkwe2bqbtdo" path="res://Scenes/GUI.tscn" id="2_j65li"]
-[ext_resource type="PackedScene" uid="uid://coaq2aavqvkct" path="res://Scenes/pausel.tscn" id="3_c8sbc"]
+[ext_resource type="PackedScene" uid="uid://coaq2aavqvkct" path="res://Scenes/pause.tscn" id="3_c8sbc"]
 [ext_resource type="Texture2D" uid="uid://c5u8w5mmugxi5" path="res://Assets/Sprites/walls.png" id="3_qc0f3"]
 [ext_resource type="Texture2D" uid="uid://braw735ytuhiy" path="res://Assets/Sprites/Floors.png" id="4_h1odd"]
 [ext_resource type="PackedScene" uid="uid://bw63ewtoh1pvb" path="res://Scenes/messageBox.tscn" id="4_iviq0"]
-[ext_resource type="Texture2D" uid="uid://cxjnoj6045dp5" path="res://Assets/Sprites/GhostieChat.png" id="5_q24kf"]
+[ext_resource type="Texture2D" uid="uid://cxjnoj6045dp5" path="res://Assets/Sprites/GhostiePortrait.png" id="5_q24kf"]
 [ext_resource type="PackedScene" uid="uid://b288gd63efmmk" path="res://Scenes/ghost.tscn" id="6_fqllo"]
 [ext_resource type="Texture2D" uid="uid://cm87s8e37cmvh" path="res://Assets/Sprites/ghosts/ghost1.png" id="7_tjli4"]
 
@@ -51,7 +51,7 @@ metadata/_snap_count = 2
 noise_type = 5
 seed = -1558351262
 frequency = 0.0038
-offset = Vector3(0, 0, 106585)
+offset = Vector3(0, 0, 82468.4)
 fractal_type = 2
 domain_warp_enabled = true
 
@@ -62,7 +62,7 @@ in_3d_space = true
 color_ramp = SubResource("Gradient_ipi4w")
 noise = SubResource("FastNoiseLite_4e5bx")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_po6df"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_npf72"]
 atlas = SubResource("NoiseTexture2D_ql8gq")
 region = Rect2(0, 0, 71, 7)
 margin = Rect2(1, 0, -1, 0)
@@ -71,7 +71,7 @@ margin = Rect2(1, 0, -1, 0)
 noise_type = 3
 seed = 187224622
 frequency = 0.0796
-offset = Vector3(0, 0, 106225)
+offset = Vector3(0, 0, 82108.5)
 fractal_type = 2
 domain_warp_enabled = true
 domain_warp_type = 1
@@ -83,7 +83,7 @@ height = 7
 in_3d_space = true
 noise = SubResource("FastNoiseLite_vormg")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_v1ne0"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ypw4"]
 atlas = SubResource("NoiseTexture2D_ligl5")
 region = Rect2(0, 0, 71, 7)
 margin = Rect2(1, 0, -1, 0)
@@ -96,7 +96,7 @@ colors = PackedColorArray(1, 0.926017, 0, 1, 1, 0.812294, 0, 1, 1, 0.670164, 0, 
 noise_type = 3
 seed = 158511198
 frequency = 0.0273
-offset = Vector3(0, 0, 106404)
+offset = Vector3(0, 0, 82287.9)
 fractal_type = 3
 domain_warp_enabled = true
 domain_warp_type = 2
@@ -109,7 +109,7 @@ in_3d_space = true
 color_ramp = SubResource("Gradient_52vul")
 noise = SubResource("FastNoiseLite_01dw1")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ovwg0"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_4x1nr"]
 atlas = SubResource("NoiseTexture2D_d24r4")
 region = Rect2(0, 0, 71, 7)
 margin = Rect2(1, 0, -1, 0)
@@ -245,13 +245,13 @@ editor_draw_screen = false
 [node name="Control" parent="Player/CanvasLayer" instance=ExtResource("2_j65li")]
 
 [node name="stamina" parent="Player/CanvasLayer/Control" index="0"]
-texture_progress = SubResource("AtlasTexture_po6df")
+texture_progress = SubResource("AtlasTexture_npf72")
 
 [node name="health" parent="Player/CanvasLayer/Control" index="1"]
-texture_progress = SubResource("AtlasTexture_v1ne0")
+texture_progress = SubResource("AtlasTexture_1ypw4")
 
 [node name="flash" parent="Player/CanvasLayer/Control" index="2"]
-texture_progress = SubResource("AtlasTexture_ovwg0")
+texture_progress = SubResource("AtlasTexture_4x1nr")
 
 [node name="Control2" parent="Player/CanvasLayer" instance=ExtResource("3_c8sbc")]
 visible = false
