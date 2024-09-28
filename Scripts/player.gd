@@ -43,23 +43,21 @@ func _physics_process(delta):
 	speedBar.value = SPRINTAMMT
 	flashlightBar.value = FLASH
 	healthBar.value = HEALTH
-
-	if controllable:
-	
-	
 	var directionVector = Vector2(Input.get_axis("Left", "Right"), Input.get_axis("Up", "Down")).limit_length(4)
 
-	if directionVector.x:
+	if controllable:
 
-		#	velocity.x = directionVector.x * SPEED
-		#else:
-		#	velocity.x = move_toward(velocity.x, 0, SPEED)
+		if directionVector.x:
+			velocity.x = directionVector.x * SPEED
 
-		#if directionVector.y:
+		else:
+			velocity.x = move_toward(velocity.x, 0, SPEED)
 
-		#	velocity.y = directionVector.y * SPEED
-		#else:
-		#	velocity.y = move_toward(velocity.y, 0, SPEED)
+		if directionVector.y:
+			velocity.y = directionVector.y * SPEED
+
+		else:
+			velocity.y = move_toward(velocity.y, 0, SPEED)
 	
 	move_and_slide()
 	

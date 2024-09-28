@@ -2,7 +2,10 @@ extends Area2D
 @export var text:Label
 @export var textBox:Control
 @export var dialog:PackedStringArray
-@export var currentPlayer:CharacterBody2D;
+@export var playerIsTalking:Array[bool]
+@export var currentPlayer:CharacterBody2D
+
+
 var dialouging = false;
 var currentText = 0;
 # Called when the node enters the scene tree for the first time.
@@ -23,6 +26,12 @@ func _input(event) -> void:
 			if currentText+1 < dialog.size():
 				currentText+=1;
 				text.text = dialog[currentText];
+				if playerIsTalking[currentText] == true:
+					textBox.get_node("GhostPortrait").modulate = Color8(255, 255, 255, 160)
+					textBox.get_node("DeathPortrait").modulate = Color8(255, 255, 255, 255)
+				else:
+					textBox.get_node("GhostPortrait").modulate = Color8(255, 255, 255, 255)
+					textBox.get_node("DeathPortrait").modulate = Color8(255, 255, 255, 160)
 				
 			else:
 				dialouging = false;

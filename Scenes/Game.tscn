@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=4 uid="uid://btk3re1p8p4fp"]
+[gd_scene load_steps=37 format=4 uid="uid://btk3re1p8p4fp"]
 
 [ext_resource type="PackedScene" uid="uid://bb20o0v6bt6sl" path="res://Scenes/player.tscn" id="1_8e4mg"]
 [ext_resource type="PackedScene" uid="uid://d2kkwe2bqbtdo" path="res://Scenes/GUI.tscn" id="2_j65li"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c5u8w5mmugxi5" path="res://Assets/Sprites/walls.png" id="3_qc0f3"]
 [ext_resource type="Texture2D" uid="uid://braw735ytuhiy" path="res://Assets/Sprites/Floors.png" id="4_h1odd"]
 [ext_resource type="PackedScene" uid="uid://bw63ewtoh1pvb" path="res://Scenes/messageBox.tscn" id="4_iviq0"]
+[ext_resource type="Texture2D" uid="uid://cxjnoj6045dp5" path="res://Assets/Sprites/GhostieChat.png" id="5_q24kf"]
 [ext_resource type="PackedScene" uid="uid://b288gd63efmmk" path="res://Scenes/ghost.tscn" id="6_fqllo"]
 [ext_resource type="Texture2D" uid="uid://cm87s8e37cmvh" path="res://Assets/Sprites/ghosts/ghost1.png" id="7_tjli4"]
 
@@ -50,7 +51,7 @@ metadata/_snap_count = 2
 noise_type = 5
 seed = -1558351262
 frequency = 0.0038
-offset = Vector3(0, 0, 140776)
+offset = Vector3(0, 0, 106585)
 fractal_type = 2
 domain_warp_enabled = true
 
@@ -61,7 +62,7 @@ in_3d_space = true
 color_ramp = SubResource("Gradient_ipi4w")
 noise = SubResource("FastNoiseLite_4e5bx")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dtm3u"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_po6df"]
 atlas = SubResource("NoiseTexture2D_ql8gq")
 region = Rect2(0, 0, 71, 7)
 margin = Rect2(1, 0, -1, 0)
@@ -70,7 +71,7 @@ margin = Rect2(1, 0, -1, 0)
 noise_type = 3
 seed = 187224622
 frequency = 0.0796
-offset = Vector3(0, 0, 140442)
+offset = Vector3(0, 0, 106225)
 fractal_type = 2
 domain_warp_enabled = true
 domain_warp_type = 1
@@ -82,7 +83,7 @@ height = 7
 in_3d_space = true
 noise = SubResource("FastNoiseLite_vormg")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6iywx"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_v1ne0"]
 atlas = SubResource("NoiseTexture2D_ligl5")
 region = Rect2(0, 0, 71, 7)
 margin = Rect2(1, 0, -1, 0)
@@ -95,7 +96,7 @@ colors = PackedColorArray(1, 0.926017, 0, 1, 1, 0.812294, 0, 1, 1, 0.670164, 0, 
 noise_type = 3
 seed = 158511198
 frequency = 0.0273
-offset = Vector3(0, 0, 140603)
+offset = Vector3(0, 0, 106404)
 fractal_type = 3
 domain_warp_enabled = true
 domain_warp_type = 2
@@ -108,7 +109,7 @@ in_3d_space = true
 color_ramp = SubResource("Gradient_52vul")
 noise = SubResource("FastNoiseLite_01dw1")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kv2cs"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ovwg0"]
 atlas = SubResource("NoiseTexture2D_d24r4")
 region = Rect2(0, 0, 71, 7)
 margin = Rect2(1, 0, -1, 0)
@@ -244,19 +245,22 @@ editor_draw_screen = false
 [node name="Control" parent="Player/CanvasLayer" instance=ExtResource("2_j65li")]
 
 [node name="stamina" parent="Player/CanvasLayer/Control" index="0"]
-texture_progress = SubResource("AtlasTexture_dtm3u")
+texture_progress = SubResource("AtlasTexture_po6df")
 
 [node name="health" parent="Player/CanvasLayer/Control" index="1"]
-texture_progress = SubResource("AtlasTexture_6iywx")
+texture_progress = SubResource("AtlasTexture_v1ne0")
 
 [node name="flash" parent="Player/CanvasLayer/Control" index="2"]
-texture_progress = SubResource("AtlasTexture_kv2cs")
+texture_progress = SubResource("AtlasTexture_ovwg0")
 
 [node name="Control2" parent="Player/CanvasLayer" instance=ExtResource("3_c8sbc")]
 visible = false
 
-[node name="Control3" parent="Player/CanvasLayer" instance=ExtResource("4_iviq0")]
+[node name="Dialogue" parent="Player/CanvasLayer" instance=ExtResource("4_iviq0")]
 visible = false
+
+[node name="GhostPortrait" parent="Player/CanvasLayer/Dialogue" index="1"]
+texture = ExtResource("5_q24kf")
 
 [node name="Layer0" type="TileMapLayer" parent="."]
 modulate = Color(0.0475577, 0.0475577, 0.0475576, 1)
@@ -332,13 +336,14 @@ autoplay = "default"
 frame_progress = 0.377475
 
 [node name="Area2D" parent="ghost" index="0" node_paths=PackedStringArray("text", "textBox", "currentPlayer")]
-text = NodePath("../../Player/CanvasLayer/Control3/ColorRect/Label")
-textBox = NodePath("../../Player/CanvasLayer/Control3")
-dialog = PackedStringArray("i..", "i..i..", "i..i..i don\'t know...", "why...?", "no...", "nNoOOo..>.>", "noOoajodafjdg", "*ded*")
+text = NodePath("../../Player/CanvasLayer/Dialogue/ColorRect/Label")
+textBox = NodePath("../../Player/CanvasLayer/Dialogue")
+dialog = PackedStringArray("Who are you?", "i..", "i..i..", "i..i..i don\'t know...", "Why are you still here?", "why...?", "no...", "nNoOOo..>.>", "noOoajodafjdg", "*ded*")
+playerIsTalking = Array[bool]([true, false, false, false, true, false, false, false, false, false])
 currentPlayer = NodePath("../../Player")
 
 [connection signal="body_entered" from="ghost/Area2D" to="ghost/Area2D" method="_on_body_entered"]
 
 [editable path="Player/CanvasLayer/Control"]
-[editable path="Player/CanvasLayer/Control3"]
+[editable path="Player/CanvasLayer/Dialogue"]
 [editable path="ghost"]

@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bw63ewtoh1pvb"]
+[gd_scene load_steps=4 format=3 uid="uid://bw63ewtoh1pvb"]
 
 [ext_resource type="FontFile" uid="uid://bwqc51vpnyp8i" path="res://Assets/fonts/paper8.ttf" id="1_3wpuq"]
+[ext_resource type="Texture2D" uid="uid://bd7ns05084yie" path="res://Assets/Sprites/Death.png" id="1_jfcii"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_hpfnl"]
 line_spacing = -17.13
@@ -11,13 +12,23 @@ outline_color = Color(0.493211, 0.493211, 0.493211, 1)
 shadow_size = 10
 shadow_color = Color(0, 0, 0, 1)
 
-[node name="Control" type="Control"]
+[node name="Dialogue" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="DeathPortrait" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.784314)
+position = Vector2(125, 325)
+scale = Vector2(4, 4)
+texture = ExtResource("1_jfcii")
+
+[node name="GhostPortrait" type="Sprite2D" parent="."]
+position = Vector2(1025, 325)
+scale = Vector2(4, 4)
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
