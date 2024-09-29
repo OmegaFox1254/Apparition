@@ -5,7 +5,7 @@
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_8xmfp"]
 seed = -1011459466
-offset = Vector3(0, 0, 198.856)
+offset = Vector3(0, 0, 205.225)
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_gq00r"]
 width = 71
@@ -13,7 +13,7 @@ height = 7
 in_3d_space = true
 noise = SubResource("FastNoiseLite_8xmfp")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_266we"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_psqur"]
 atlas = SubResource("NoiseTexture2D_gq00r")
 region = Rect2(0, 0, 71, 7)
 margin = Rect2(1, 0, -1, 0)
@@ -24,6 +24,6 @@ step = 4.0
 value = 52.0
 rounded = true
 texture_over = ExtResource("1_k5cun")
-texture_progress = SubResource("AtlasTexture_266we")
+texture_progress = SubResource("AtlasTexture_psqur")
 script = ExtResource("1_0ay3v")
 noise_texture = SubResource("NoiseTexture2D_gq00r")
