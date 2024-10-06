@@ -7,6 +7,9 @@ extends Area2D
 @export var deathAnimationTalk:AnimationPlayer
 @export var ghostAnimationTalk:AnimationPlayer
 
+@export var variationMin:float = 0.9;
+@export var variationMax:float = 1.1;
+
 var dialouging = false;
 var speaking = false;
 var currentText = 0;
@@ -29,6 +32,7 @@ func _on_body_entered(body: Node2D) -> void:
 			if(playerIsTalking[currentText]==true):
 				textBox.get_node("DeathPortrait").get_node("AudioStreamPlayer").playing = true;
 			else:
+				textBox.get_node("GhostPortrait").get_node("AudioStreamPlayer").pitch_scale = randf_range(variationMin, variationMax);
 				textBox.get_node("GhostPortrait").get_node("AudioStreamPlayer").playing = true;
 			await get_tree().create_timer(0.04).timeout;
 		speaking = false;
@@ -61,6 +65,7 @@ func _input(_event) -> void:
 				if(playerIsTalking[currentText]==true):
 					textBox.get_node("DeathPortrait").get_node("AudioStreamPlayer").playing = true;
 				else:
+					textBox.get_node("GhostPortrait").get_node("AudioStreamPlayer").pitch_scale = randf_range(variationMin, variationMax);
 					textBox.get_node("GhostPortrait").get_node("AudioStreamPlayer").playing = true;
 				await get_tree().create_timer(0.04).timeout;
 			speaking = false;
