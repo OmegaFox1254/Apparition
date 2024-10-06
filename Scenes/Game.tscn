@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=4 uid="uid://btk3re1p8p4fp"]
+[gd_scene load_steps=39 format=4 uid="uid://btk3re1p8p4fp"]
 
 [ext_resource type="PackedScene" uid="uid://bb20o0v6bt6sl" path="res://Scenes/player.tscn" id="1_8e4mg"]
 [ext_resource type="PackedScene" uid="uid://d2kkwe2bqbtdo" path="res://Scenes/GUI.tscn" id="2_j65li"]
@@ -6,8 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://c5u8w5mmugxi5" path="res://Assets/Sprites/walls.png" id="3_qc0f3"]
 [ext_resource type="Texture2D" uid="uid://braw735ytuhiy" path="res://Assets/Sprites/Floors.png" id="4_h1odd"]
 [ext_resource type="PackedScene" uid="uid://bw63ewtoh1pvb" path="res://Scenes/messageBox.tscn" id="4_iviq0"]
+[ext_resource type="AudioStream" uid="uid://d2q1b21pipeyg" path="res://Assets/noises/Вторник в 18-14 (1).mp3" id="5_a6mts"]
 [ext_resource type="Texture2D" uid="uid://cxjnoj6045dp5" path="res://Assets/Sprites/GhostiePortrait.png" id="5_q24kf"]
 [ext_resource type="PackedScene" uid="uid://b288gd63efmmk" path="res://Scenes/ghost.tscn" id="6_fqllo"]
+[ext_resource type="AudioStream" uid="uid://chrle5fvjrnsf" path="res://Assets/noises/Вторник в 18-14 (2).mp3" id="7_qiox1"]
 [ext_resource type="Texture2D" uid="uid://cm87s8e37cmvh" path="res://Assets/Sprites/ghosts/ghost1.png" id="7_tjli4"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dt3hk"]
@@ -51,7 +53,7 @@ metadata/_snap_count = 2
 noise_type = 5
 seed = -1558351262
 frequency = 0.0038
-offset = Vector3(0, 0, 66466.9)
+offset = Vector3(0, 0, 75988.9)
 fractal_type = 2
 domain_warp_enabled = true
 
@@ -62,7 +64,7 @@ in_3d_space = true
 color_ramp = SubResource("Gradient_ipi4w")
 noise = SubResource("FastNoiseLite_4e5bx")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xvmkk"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_jdy88"]
 atlas = SubResource("NoiseTexture2D_ql8gq")
 region = Rect2(0, 0, 71, 7)
 margin = Rect2(1, 0, -1, 0)
@@ -71,7 +73,7 @@ margin = Rect2(1, 0, -1, 0)
 noise_type = 3
 seed = 187224622
 frequency = 0.0796
-offset = Vector3(0, 0, 66107)
+offset = Vector3(0, 0, 75628.9)
 fractal_type = 2
 domain_warp_enabled = true
 domain_warp_type = 1
@@ -83,7 +85,7 @@ height = 7
 in_3d_space = true
 noise = SubResource("FastNoiseLite_vormg")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5kv3q"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_2wpv7"]
 atlas = SubResource("NoiseTexture2D_ligl5")
 region = Rect2(0, 0, 71, 7)
 margin = Rect2(1, 0, -1, 0)
@@ -96,7 +98,7 @@ colors = PackedColorArray(1, 0.926017, 0, 1, 1, 0.812294, 0, 1, 1, 0.670164, 0, 
 noise_type = 3
 seed = 158511198
 frequency = 0.0273
-offset = Vector3(0, 0, 66286.4)
+offset = Vector3(0, 0, 75808.4)
 fractal_type = 3
 domain_warp_enabled = true
 domain_warp_type = 2
@@ -109,7 +111,7 @@ in_3d_space = true
 color_ramp = SubResource("Gradient_52vul")
 noise = SubResource("FastNoiseLite_01dw1")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_i2yn5"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_cw02e"]
 atlas = SubResource("NoiseTexture2D_d24r4")
 region = Rect2(0, 0, 71, 7)
 margin = Rect2(1, 0, -1, 0)
@@ -245,13 +247,13 @@ editor_draw_screen = false
 [node name="Control" parent="Player/CanvasLayer" instance=ExtResource("2_j65li")]
 
 [node name="stamina" parent="Player/CanvasLayer/Control" index="0"]
-texture_progress = SubResource("AtlasTexture_xvmkk")
+texture_progress = SubResource("AtlasTexture_jdy88")
 
 [node name="health" parent="Player/CanvasLayer/Control" index="1"]
-texture_progress = SubResource("AtlasTexture_5kv3q")
+texture_progress = SubResource("AtlasTexture_2wpv7")
 
 [node name="flash" parent="Player/CanvasLayer/Control" index="2"]
-texture_progress = SubResource("AtlasTexture_i2yn5")
+texture_progress = SubResource("AtlasTexture_cw02e")
 
 [node name="Control2" parent="Player/CanvasLayer" instance=ExtResource("3_c8sbc")]
 visible = false
@@ -259,8 +261,14 @@ visible = false
 [node name="Dialogue" parent="Player/CanvasLayer" instance=ExtResource("4_iviq0")]
 visible = false
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Player/CanvasLayer/Dialogue/DeathPortrait" index="1"]
+stream = ExtResource("5_a6mts")
+
 [node name="GhostPortrait" parent="Player/CanvasLayer/Dialogue" index="1"]
 texture = ExtResource("5_q24kf")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Player/CanvasLayer/Dialogue/GhostPortrait" index="1"]
+stream = ExtResource("7_qiox1")
 
 [node name="Layer0" type="TileMapLayer" parent="."]
 modulate = Color(0.0475577, 0.0475577, 0.0475576, 1)
@@ -335,12 +343,15 @@ sprite_frames = SubResource("SpriteFrames_x1mje")
 autoplay = "default"
 frame_progress = 0.377475
 
-[node name="Area2D" parent="ghost" index="0" node_paths=PackedStringArray("text", "textBox", "currentPlayer")]
+[node name="Area2D" parent="ghost" index="0" node_paths=PackedStringArray("text", "textBox", "currentPlayer", "deathAnimationTalk", "ghostAnimationTalk")]
+disable_mode = 2
 text = NodePath("../../Player/CanvasLayer/Dialogue/ColorRect/Label")
 textBox = NodePath("../../Player/CanvasLayer/Dialogue")
-dialog = PackedStringArray("кто ты?", "я..", "я..я..", "я..я..я.. не знаю...", "Почему ты все еще здесь?", "что...?", "нет...", "неТттТнтАСви..>.>", "НЕеЕНЕеахдвиваоо", "*мертвый*")
+dialog = PackedStringArray("кто ты?", "я..", "я..", "я... не знаю...", "Почему ты все еще здесь?", "что...?", "нет...", "неТттТнтАСви..>.>", "НЕеЕНЕеахдвиваоо", "*мертвый*")
 playerIsTalking = Array[bool]([true, false, false, false, true, false, false, false, false, false])
 currentPlayer = NodePath("../../Player")
+deathAnimationTalk = NodePath("../../Player/CanvasLayer/Dialogue/DeathPortrait/AnimationPlayer")
+ghostAnimationTalk = NodePath("../../Player/CanvasLayer/Dialogue/GhostPortrait/AnimationPlayer2")
 
 [connection signal="body_entered" from="ghost/Area2D" to="ghost/Area2D" method="_on_body_entered"]
 
