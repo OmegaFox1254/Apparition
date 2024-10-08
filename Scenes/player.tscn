@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dbtb1rl86kd7k" path="res://Assets/Sprites/DeathSprite.png" id="2_atbpe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aiem3"]
-size = Vector2(25.974, 26.6667)
+size = Vector2(22.7543, 26.6667)
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_2bef6"]
 light_mode = 1
@@ -14,7 +14,7 @@ z_index = 5
 script = ExtResource("1_1nrc7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(4.02127e-08, -7.45058e-08)
+position = Vector2(0.0499485, 5.21223e-08)
 rotation = -3.14159
 scale = Vector2(0.308, -0.45)
 shape = SubResource("RectangleShape2D_aiem3")

@@ -3,6 +3,17 @@
 [ext_resource type="FontFile" uid="uid://bwqc51vpnyp8i" path="res://Assets/fonts/paper8.ttf" id="1_3wpuq"]
 [ext_resource type="Texture2D" uid="uid://bd7ns05084yie" path="res://Assets/Sprites/DeathPortrait.png" id="1_jfcii"]
 
+[sub_resource type="FontVariation" id="FontVariation_i03vb"]
+base_font = ExtResource("1_3wpuq")
+
+[sub_resource type="LabelSettings" id="LabelSettings_hpfnl"]
+font = SubResource("FontVariation_i03vb")
+font_size = 65
+outline_size = 10
+outline_color = Color(0.493211, 0.493211, 0.493211, 1)
+shadow_size = 10
+shadow_color = Color(0, 0, 0, 1)
+
 [sub_resource type="Animation" id="Animation_5s4qh"]
 length = 0.001
 tracks/0/type = "value"
@@ -40,17 +51,6 @@ _data = {
 "dim": SubResource("Animation_viawj")
 }
 
-[sub_resource type="FontVariation" id="FontVariation_i03vb"]
-base_font = ExtResource("1_3wpuq")
-
-[sub_resource type="LabelSettings" id="LabelSettings_hpfnl"]
-font = SubResource("FontVariation_i03vb")
-font_size = 65
-outline_size = 10
-outline_color = Color(0.493211, 0.493211, 0.493211, 1)
-shadow_size = 10
-shadow_color = Color(0, 0, 0, 1)
-
 [node name="Dialogue" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -58,27 +58,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="DeathPortrait" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0.286275)
-position = Vector2(125, 325)
-scale = Vector2(4, 4)
-texture = ExtResource("1_jfcii")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="DeathPortrait"]
-libraries = {
-"": SubResource("AnimationLibrary_jd8pg")
-}
-
-[node name="GhostPortrait" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0.286275)
-position = Vector2(1025, 325)
-scale = Vector2(4, 4)
-
-[node name="AnimationPlayer2" type="AnimationPlayer" parent="GhostPortrait"]
-libraries = {
-"": SubResource("AnimationLibrary_jd8pg")
-}
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -110,3 +89,24 @@ text = "test text"
 label_settings = SubResource("LabelSettings_hpfnl")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="GhostPortrait" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.286275)
+position = Vector2(1025, 325)
+scale = Vector2(4, 4)
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="GhostPortrait"]
+libraries = {
+"": SubResource("AnimationLibrary_jd8pg")
+}
+
+[node name="DeathPortrait" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.286275)
+position = Vector2(125, 325)
+scale = Vector2(4, 4)
+texture = ExtResource("1_jfcii")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DeathPortrait"]
+libraries = {
+"": SubResource("AnimationLibrary_jd8pg")
+}
