@@ -1,6 +1,7 @@
 extends Area2D
 @export var text:Label
 @export var textBox:Control
+@export var anchor:Control
 @export var dialog:PackedStringArray
 @export var playerIsTalking:Array[bool]
 @export var currentPlayer:CharacterBody2D
@@ -38,7 +39,7 @@ func _on_body_entered(body: Node2D) -> void:
 		speaking = false;
 		
 		if playerIsTalking[currentText] == true:
-			textBox.get_node("GhostPortrait").modulate = Color8(255, 255, 255, 73);
+			anchor.get_node("GhostPortrait").modulate = Color8(255, 255, 255, 73);
 			textBox.get_node("DeathPortrait").modulate = Color8(255, 255, 255, 255);
 		else:
 			textBox.get_node("GhostPortrait").modulate = Color8(255, 255, 255, 255);
@@ -65,8 +66,8 @@ func _input(_event) -> void:
 				if(playerIsTalking[currentText]==true):
 					textBox.get_node("DeathPortrait").get_node("AudioStreamPlayer").playing = true;
 				else:
-					textBox.get_node("GhostPortrait").get_node("AudioStreamPlayer").pitch_scale = randf_range(variationMin, variationMax);
-					textBox.get_node("GhostPortrait").get_node("AudioStreamPlayer").playing = true;
+					anchor.get_node("GhostPortrait").get_node("AudioStreamPlayer").pitch_scale = randf_range(variationMin, variationMax);
+					anchor.get_node("GhostPortrait").get_node("AudioStreamPlayer").playing = true;
 				await get_tree().create_timer(0.04).timeout;
 			speaking = false;
 		else:

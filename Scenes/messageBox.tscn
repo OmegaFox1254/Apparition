@@ -1,7 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bw63ewtoh1pvb"]
+[gd_scene load_steps=10 format=3 uid="uid://bw63ewtoh1pvb"]
 
 [ext_resource type="FontFile" uid="uid://bwqc51vpnyp8i" path="res://Assets/fonts/paper8.ttf" id="1_3wpuq"]
 [ext_resource type="Texture2D" uid="uid://bd7ns05084yie" path="res://Assets/Sprites/DeathPortrait.png" id="1_jfcii"]
+[ext_resource type="AudioStream" uid="uid://d2q1b21pipeyg" path="res://Assets/noises/Вторник в 18-14 (1).mp3" id="3_vtm6y"]
+[ext_resource type="AudioStream" uid="uid://chrle5fvjrnsf" path="res://Assets/noises/Вторник в 18-14 (2).mp3" id="4_x3e42"]
 
 [sub_resource type="FontVariation" id="FontVariation_i03vb"]
 base_font = ExtResource("1_3wpuq")
@@ -53,11 +55,13 @@ _data = {
 
 [node name="Dialogue" type="Control"]
 layout_mode = 3
-anchors_preset = 15
+anchors_preset = 12
+anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
+size_flags_vertical = 3
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -90,23 +94,42 @@ label_settings = SubResource("LabelSettings_hpfnl")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="GhostPortrait" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0.286275)
-position = Vector2(1025, 325)
-scale = Vector2(4, 4)
-
-[node name="AnimationPlayer2" type="AnimationPlayer" parent="GhostPortrait"]
-libraries = {
-"": SubResource("AnimationLibrary_jd8pg")
-}
-
 [node name="DeathPortrait" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.286275)
 position = Vector2(125, 325)
 scale = Vector2(4, 4)
 texture = ExtResource("1_jfcii")
+offset = Vector2(0, -160)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="DeathPortrait"]
 libraries = {
 "": SubResource("AnimationLibrary_jd8pg")
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="DeathPortrait"]
+stream = ExtResource("3_vtm6y")
+
+[node name="Anchor" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -1152.0
+offset_right = -1112.0
+offset_bottom = 40.0
+grow_horizontal = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="GhostPortrait" type="Sprite2D" parent="Anchor"]
+modulate = Color(1, 1, 1, 0.286275)
+position = Vector2(1025, 325)
+scale = Vector2(4, 4)
+offset = Vector2(0, -160)
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="Anchor/GhostPortrait"]
+libraries = {
+"": SubResource("AnimationLibrary_jd8pg")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Anchor/GhostPortrait"]
+stream = ExtResource("4_x3e42")
