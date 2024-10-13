@@ -296,7 +296,7 @@ metadata/_snap_count = 2
 noise_type = 5
 seed = -1558351262
 frequency = 0.0038
-offset = Vector3(0, 0, 151447)
+offset = Vector3(0, 0, 66555.2)
 fractal_type = 2
 domain_warp_enabled = true
 
@@ -307,7 +307,7 @@ in_3d_space = true
 color_ramp = SubResource("Gradient_ipi4w")
 noise = SubResource("FastNoiseLite_4e5bx")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_o6cmu"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_vp42j"]
 atlas = SubResource("NoiseTexture2D_ql8gq")
 region = Rect2(0, 0, 71, 7)
 margin = Rect2(1, 0, -1, 0)
@@ -316,7 +316,7 @@ margin = Rect2(1, 0, -1, 0)
 noise_type = 3
 seed = 187224622
 frequency = 0.0796
-offset = Vector3(0, 0, 151074)
+offset = Vector3(0, 0, 66195.3)
 fractal_type = 2
 domain_warp_enabled = true
 domain_warp_type = 1
@@ -328,7 +328,7 @@ height = 7
 in_3d_space = true
 noise = SubResource("FastNoiseLite_vormg")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6fiig"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_p80g0"]
 atlas = SubResource("NoiseTexture2D_ligl5")
 region = Rect2(0, 0, 71, 7)
 margin = Rect2(1, 0, -1, 0)
@@ -341,7 +341,7 @@ colors = PackedColorArray(1, 0.926017, 0, 1, 1, 0.812294, 0, 1, 1, 0.670164, 0, 
 noise_type = 3
 seed = 158511198
 frequency = 0.0273
-offset = Vector3(0, 0, 151258)
+offset = Vector3(0, 0, 66374.7)
 fractal_type = 3
 domain_warp_enabled = true
 domain_warp_type = 2
@@ -354,7 +354,7 @@ in_3d_space = true
 color_ramp = SubResource("Gradient_52vul")
 noise = SubResource("FastNoiseLite_01dw1")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6uk5s"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ki0pc"]
 atlas = SubResource("NoiseTexture2D_d24r4")
 region = Rect2(0, 0, 71, 7)
 margin = Rect2(1, 0, -1, 0)
@@ -463,13 +463,13 @@ editor_draw_screen = false
 [node name="Control" parent="Player/CanvasLayer" instance=ExtResource("2_j65li")]
 
 [node name="stamina" parent="Player/CanvasLayer/Control" index="0"]
-texture_progress = SubResource("AtlasTexture_o6cmu")
+texture_progress = SubResource("AtlasTexture_vp42j")
 
 [node name="health" parent="Player/CanvasLayer/Control" index="1"]
-texture_progress = SubResource("AtlasTexture_6fiig")
+texture_progress = SubResource("AtlasTexture_p80g0")
 
 [node name="flash" parent="Player/CanvasLayer/Control" index="2"]
-texture_progress = SubResource("AtlasTexture_6uk5s")
+texture_progress = SubResource("AtlasTexture_ki0pc")
 
 [node name="Control2" parent="Player/CanvasLayer" instance=ExtResource("3_c8sbc")]
 visible = false
