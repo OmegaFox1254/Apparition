@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c5u8w5mmugxi5"
-path="res://.godot/imported/walls.png-b6b84397093bd4d9e585eb9d55831231.ctex"
+uid="uid://bdyt85m2ourmu"
+path="res://.godot/imported/TeacupFull.png-a521f3dc6ccd7d13f3d98e274731699e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/walls.png"
-dest_files=["res://.godot/imported/walls.png-b6b84397093bd4d9e585eb9d55831231.ctex"]
+source_file="res://Assets/Sprites/Items/TeacupFull.png"
+dest_files=["res://.godot/imported/TeacupFull.png-a521f3dc6ccd7d13f3d98e274731699e.ctex"]
 
 [params]
 
