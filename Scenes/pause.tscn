@@ -25,7 +25,7 @@ colors = PackedColorArray(1, 1, 1, 1, 0.543131, 0.629645, 1, 1, 0, 0, 0, 1)
 noise_type = 4
 seed = 1381939053
 frequency = 0.279
-offset = Vector3(0, 0, 260110)
+offset = Vector3(0, 0, 261058)
 domain_warp_enabled = true
 domain_warp_fractal_type = 0
 metadata/_preview_in_3d_space_ = true
@@ -37,7 +37,7 @@ in_3d_space = true
 color_ramp = SubResource("Gradient_cljap")
 noise = SubResource("FastNoiseLite_ri4ap")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fbp2c"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_g720a"]
 atlas = SubResource("NoiseTexture2D_n4rr4")
 region = Rect2(0, 0, 71, 7)
 margin = Rect2(1, 0, -1, 0)
@@ -100,7 +100,7 @@ pivot_offset = Vector2(35.5407, 3.51579)
 max_value = 0.0
 value = 0.0
 allow_greater = true
-texture_progress = SubResource("AtlasTexture_fbp2c")
+texture_progress = SubResource("AtlasTexture_g720a")
 noise_texture = SubResource("NoiseTexture2D_n4rr4")
 
 [node name="Label" type="Label" parent="Button"]

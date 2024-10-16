@@ -29,6 +29,8 @@ func _unhandled_input(_event: InputEvent) -> void:
 		else:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 func _physics_process(delta):
+	var directionVector = Vector2(Input.get_axis("Left", "Right"), Input.get_axis("Up", "Down")).limit_length(4)
+	
 	if SPRINTAMMT <= 0:
 		SPRINTOUT = true
 	if SPRINTAMMT >= 100:
@@ -43,11 +45,10 @@ func _physics_process(delta):
 	speedBar.value = SPRINTAMMT
 	flashlightBar.value = FLASH
 	healthBar.value = HEALTH
-	var directionVector = Vector2(Input.get_axis("Left", "Right"), Input.get_axis("Up", "Down")).limit_length(4)
 	
 	if controllable:
+		
 		$Sprite2D.frame_coords = directionVector + Vector2(1, 1)
-
 		if directionVector.x:
 			velocity.x = directionVector.x * SPEED
 
@@ -59,5 +60,6 @@ func _physics_process(delta):
 
 		else:
 			velocity.y = move_toward(velocity.y, 0, SPEED)
-	
+	else:
+		directionVector = Vector2(0,0)
 	move_and_slide()

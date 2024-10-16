@@ -30,6 +30,7 @@ func _on_body_entered(body: Node2D) -> void:
 		for i in dialog[currentText]:
 			speaking = true;
 			text.text += i;
+			currentPlayer.controllable = false
 			if(playerIsTalking[currentText]==true):
 				textBox.get_node("DeathPortrait").get_node("AudioStreamPlayer").playing = true;
 			else:
@@ -73,3 +74,4 @@ func _input(_event) -> void:
 		else:
 			dialouging = false;
 			textBox.visible = false;
+			currentPlayer.controllable = true
