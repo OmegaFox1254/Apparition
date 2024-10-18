@@ -13,6 +13,7 @@ extends Area2D
 
 var dialouging = false;
 var speaking = false;
+var skip = false
 var currentText = 0;
 
 var currentTime:float = 0;
@@ -27,6 +28,9 @@ func _on_body_entered(body: Node2D) -> void:
 		dialouging = true
 		textBox.visible = true;
 		text.text = "";
+		var Interacting = Input.is_action_just_pressed("Interact")
+		
+		
 		for i in dialog[currentText]:
 			speaking = true;
 			text.text += i;
@@ -37,7 +41,8 @@ func _on_body_entered(body: Node2D) -> void:
 				textBox.get_node("GhostPortrait").get_node("AudioStreamPlayer").pitch_scale = randf_range(variationMin, variationMax);
 				textBox.get_node("GhostPortrait").get_node("AudioStreamPlayer").playing = true;
 			await get_tree().create_timer(0.04).timeout;
-		speaking = false;
+		
+			speaking = false
 		
 		if playerIsTalking[currentText] == true:
 			anchor.get_node("GhostPortrait").modulate = Color8(255, 255, 255, 73);
@@ -70,7 +75,16 @@ func _input(_event) -> void:
 					anchor.get_node("GhostPortrait").get_node("AudioStreamPlayer").pitch_scale = randf_range(variationMin, variationMax);
 					anchor.get_node("GhostPortrait").get_node("AudioStreamPlayer").playing = true;
 				await get_tree().create_timer(0.04).timeout;
+				
+				#broken spot
+				if Interacting and speaking == true and skip == false:
+					print("Interacting")
+					skip = true
+					for n in dialog[currentText]:
+						text.text += i
+				
 			speaking = false;
+			skip = false
 		else:
 			dialouging = false;
 			textBox.visible = false;
