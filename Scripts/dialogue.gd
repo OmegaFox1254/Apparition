@@ -13,7 +13,7 @@ extends Area2D
 
 var dialouging = false;
 var speaking = false;
-var skip = false
+var CPD = 0;
 var currentText = 0;
 
 var currentTime:float = 0;
@@ -30,6 +30,14 @@ func _on_body_entered(body: Node2D) -> void:
 		text.text = "";
 		var Interacting = Input.is_action_just_pressed("Interact")
 		
+		if playerIsTalking[currentText] == true:
+			anchor.get_node("GhostPortrait").modulate = Color8(255, 255, 255, 73);
+			textBox.get_node("DeathPortrait").modulate = Color8(255, 255, 255, 255);
+		else:
+			anchor.get_node("GhostPortrait").modulate = Color8(255, 255, 255, 255);
+			textBox.get_node("DeathPortrait").modulate = Color8(255, 255, 255, 73);
+			
+		
 		
 		for i in dialog[currentText]:
 			speaking = true;
@@ -44,13 +52,6 @@ func _on_body_entered(body: Node2D) -> void:
 		
 			speaking = false
 		
-		if playerIsTalking[currentText] == true:
-			anchor.get_node("GhostPortrait").modulate = Color8(255, 255, 255, 73);
-			textBox.get_node("DeathPortrait").modulate = Color8(255, 255, 255, 255);
-		else:
-			textBox.get_node("GhostPortrait").modulate = Color8(255, 255, 255, 255);
-			textBox.get_node("DeathPortrait").modulate = Color8(255, 255, 255, 73);
-			
 			
 
 func _input(_event) -> void:
@@ -58,15 +59,17 @@ func _input(_event) -> void:
 	if Interacting and dialouging == true and speaking == false:
 		if currentText+1 < dialog.size():
 			currentText+=1;
+			
 			if playerIsTalking[currentText] == true && playerIsTalking[currentText-1]==false:
 				deathAnimationTalk.play_backwards("dim");
 				ghostAnimationTalk.play("dim");
 			elif playerIsTalking[currentText]==false && playerIsTalking[currentText-1]==true:
 				deathAnimationTalk.play("dim");
 				ghostAnimationTalk.play_backwards("dim");
-			
+			CPD = 0;
 			text.text = "";
 			for i in dialog[currentText]:
+
 				speaking = true;
 				text.text += i;
 				if(playerIsTalking[currentText]==true):
@@ -74,17 +77,15 @@ func _input(_event) -> void:
 				else:
 					anchor.get_node("GhostPortrait").get_node("AudioStreamPlayer").pitch_scale = randf_range(variationMin, variationMax);
 					anchor.get_node("GhostPortrait").get_node("AudioStreamPlayer").playing = true;
-				await get_tree().create_timer(0.04).timeout;
-				
-				#broken spot
-				if Interacting and speaking == true and skip == false:
-					print("Interacting")
-					skip = true
-					for n in dialog[currentText]:
-						text.text += i
-				
+				#not broken spot
+				if CPD <=1 && speaking == true:
+					print("CPD:"+str(CPD));
+					if (Input.is_action_just_pressed("Interact") == true and speaking == true):
+						CPD+=1;
+					await get_tree().create_timer(0.04).timeout;
+
 			speaking = false;
-			skip = false
+			
 		else:
 			dialouging = false;
 			textBox.visible = false;

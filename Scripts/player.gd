@@ -45,7 +45,7 @@ func _physics_process(delta):
 	speedBar.value = SPRINTAMMT
 	flashlightBar.value = FLASH
 	healthBar.value = HEALTH
-	
+	#wat u doin here? this is gonna freeze everything because the velocity doesn't reset
 	if controllable:
 		
 		$Sprite2D.frame_coords = directionVector + Vector2(1, 1)
@@ -62,4 +62,7 @@ func _physics_process(delta):
 			velocity.y = move_toward(velocity.y, 0, SPEED)
 	else:
 		directionVector = Vector2(0,0)
+		#fix
+		velocity = directionVector;
+		$Sprite2D.frame_coords = directionVector + Vector2(1, 1)
 	move_and_slide()
