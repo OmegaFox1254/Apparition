@@ -14,7 +14,6 @@ z_index = 5
 script = ExtResource("1_1nrc7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.0499485, 5.21223e-08)
 rotation = -3.14159
 scale = Vector2(0.308, -0.45)
 shape = SubResource("RectangleShape2D_aiem3")
