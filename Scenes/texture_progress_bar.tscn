@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cd8nvfesacup8"]
 
-[ext_resource type="Script" path="res://materials/noise.gd" id="1_0ay3v"]
+[ext_resource type="Script" uid="uid://6vci5v5gx7pq" path="res://materials/noise.gd" id="1_0ay3v"]
 [ext_resource type="Texture2D" uid="uid://br4tbkprllr0m" path="res://Assets/Sprites/bar_base.png" id="1_k5cun"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_8xmfp"]

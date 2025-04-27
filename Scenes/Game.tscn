@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://c7v86n67h413u" path="res://Assets/Sprites/Tiles/HouseTileset.001.png.png" id="4_sycsj"]
 [ext_resource type="Texture2D" uid="uid://cxjnoj6045dp5" path="res://Assets/Sprites/GhostiePortrait.png" id="5_7l6xk"]
 [ext_resource type="PackedScene" uid="uid://b288gd63efmmk" path="res://Scenes/ghost.tscn" id="6_fqllo"]
-[ext_resource type="Texture2D" uid="uid://cm87s8e37cmvh" path="res://Assets/Sprites/Ghosts/ghost1.png" id="7_tjli4"]
+[ext_resource type="Texture2D" uid="uid://cm87s8e37cmvh" path="res://Assets/Sprites/ghosts/ghost1.png" id="7_tjli4"]
 [ext_resource type="Texture2D" uid="uid://dn1pr4bde516u" path="res://Assets/Sprites/Tiles/demo.png" id="8_j2f5c"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ufllh"]

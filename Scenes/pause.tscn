@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://coaq2aavqvkct"]
 
-[ext_resource type="Shader" path="res://materials/invert.gdshader" id="1_rftqv"]
+[ext_resource type="Shader" uid="uid://bqosybm7nd8jn" path="res://materials/invert.gdshader" id="1_rftqv"]
 [ext_resource type="PackedScene" uid="uid://cd8nvfesacup8" path="res://Scenes/texture_progress_bar.tscn" id="2_3vtvt"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_v8s4p"]

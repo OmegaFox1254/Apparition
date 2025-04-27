@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bb20o0v6bt6sl"]
 
-[ext_resource type="Script" path="res://Scripts/player.gd" id="1_1nrc7"]
+[ext_resource type="Script" uid="uid://fcaq6jrxm04b" path="res://Scripts/player.gd" id="1_1nrc7"]
 [ext_resource type="Texture2D" uid="uid://dbtb1rl86kd7k" path="res://Assets/Sprites/DeathSprite.png" id="2_atbpe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aiem3"]

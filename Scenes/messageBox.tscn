@@ -49,8 +49,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jd8pg"]
 _data = {
-"RESET": SubResource("Animation_5s4qh"),
-"dim": SubResource("Animation_viawj")
+&"RESET": SubResource("Animation_5s4qh"),
+&"dim": SubResource("Animation_viawj")
 }
 
 [node name="Dialogue" type="Control"]
